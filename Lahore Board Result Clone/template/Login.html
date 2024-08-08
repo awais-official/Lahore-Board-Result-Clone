@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Board of Intermediate & Secondary Education, Lahore</title>
+    <link rel="stylesheet" href="/static/style1.css">
+    <link rel="icon" type="image/x-icon" href="/static/image.png">
+    <script>
+        function submitForm() {
+            var rollNo = document.getElementById('roll-no').value;
+            if (rollNo) {
+                // Construct the URL using the roll number
+                var url = '/result/' + encodeURIComponent(rollNo) + '/';
+                window.location.href = url;
+            }
+            return false; // Prevent form from submitting the traditional way
+        }
+    </script>
+</head>
+
+<body>
+    <div class="header">
+        <img src="static/logo.png" alt="BISE Lahore Logo">
+        <h1>BISE LAHORE</h1>
+        <h4>Board of Intermediate and Secondary Education, Lahore</h4>
+    </div>
+
+    <div class="container">
+        <div class="heading">
+            <h3>Previous Results</h3>
+            <hr>
+        </div>
+
+        <form onsubmit="return submitForm();">
+            <div style="display: flex; margin-top: 120px;">
+                <div style="display: flex;" class="form-group">
+                    <button class="btn-style" type="button">
+                        RollNo:
+                    </button>
+                    <input style="margin-left: 10px; border-radius: 10px; border-color: black; width: 200px; height: 25px; margin-top: 3px; border: 2px solid black;" type="text" id="roll-no" name="roll_number" placeholder="">
+                </div>
+            </div>
+
+            <div style="margin-top: 50px; margin-left: 80px;" class="btn-result">
+                <button type="submit">VIEW RESULT</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="footer">
+        Powered by: Board of Intermediate and Secondary Education, Lahore (COMPUTER SECTION)
+    </div>
+</body>
+
+</html>

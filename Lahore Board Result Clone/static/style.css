@@ -1,0 +1,19 @@
+table {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.content {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.img {
+    margin-left: 982px;
+}
+
+.img-txt {
+    display: flex;
+    flex-direction: column;
+    ;
+}

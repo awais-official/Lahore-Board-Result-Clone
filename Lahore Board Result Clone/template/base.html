@@ -1,0 +1,127 @@
+{% load my_filters %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board of Intermediate & Secondary Education,Lahore</title>
+    <style>
+        table,
+        th,
+        tr,
+        td {
+            border: 1px solid;
+            text-align: center;
+            border-collapse: collapse;
+            text-transform: uppercase;
+        }
+        
+        th {
+            background-color: lightgray;
+        }
+    </style>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <div class="content">
+        <h1 style="font-size: 18px;text-align: center;">BOARD OF INTERMEDIATE & SECONDARY EDUCATION, LAHORE</h1>
+        <p style="display: flex; justify-content: space-between;">
+            <span><b>Roll No:</b> <u>{{student.roll_number}}</u></span>
+            <span><img style="width: 80px; height: 80px;" src="/static/image.png" alt=""></span>
+            <span><b>Registration No:</b> <u>{{student.registration_number}}</u></span>
+        </p>
+        <p style="font-size: 14px; font-weight: bold; text-align: center; margin-left: -40px;">SECONDARY SCHOOL CERTIFICATE (ANNUAL) EXAMINATION,<u>2024</u></p>
+        <p style="font-size: 14px; font-weight: bold; text-align: center; margin-top: -10px;">GROUP: <b>{{student.group}}</b></p>
+
+        <div class="student-info">
+            <span><b>Student Name:</b> <u> <span style="margin-left: 90px;">{{ student.name }}</span> </u>
+            </span>
+            <span style="margin-left: 530px; font-size: 14px;"> {{ student.cnic }}</b> </span>
+
+            <div class="image-container">
+                <img style="width: 120px; height: 120px; margin-left: 1080px; " src="/static/{{student.roll_number}}.png" alt="">
+            </div>
+        </div>
+
+        <p style="display: flex; margin-top: -99px; ">
+            <span><b>Father Name:</b> <u><span style="margin-left: 95px;">{{ student.father_name }}</span></u>
+            </span>
+            <span style="margin-left: 558px; font-size: 14px"> {{ student.father_cnic }}</b> </span>
+        </p>
+
+        <p><b>Date Of Birth: </b> <u><span style="margin-left: 90px;">{{ student.date_of_birth }}</span></u></p>
+        <p><b>Institution/District:</b><u><span style="margin-left:60px;">{{ student.institution_district}}</span> </u></p>
+    </div>
+
+    <div class="table">
+        <table>
+            <tr>
+                <th rowspan="2">Subject</th>
+                <th colspan="3">Maximum Marks</th>
+                <th colspan="3">Marks Obtained</th>
+                <th rowspan="2">Total</th>
+                <th rowspan="2">Percentile Score</th>
+                <th rowspan="2">Rel. Grade</th>
+                <th rowspan="2">Status</th>
+            </tr>
+            <tr>
+                <th>TH</th>
+                <th>PR</th>
+                <th>TOtal</th>
+                <th>Th-I</th>
+                <th>TH-II</th>
+                <th>PR-II</th>
+            </tr>
+            {% for subject in subjects %}
+            <tr>
+                <td style="text-align: left;">{{ subject.subject_name }}</td>
+                <td style="background-color: lightgray;">{{ subject.th1 }}+{{ subject.th2 }}={{ subject.total }}</td>
+                <!-- <td style="background-color: lightgray;">50+50=100</td> -->
+                <td style="background-color: lightgray;">30</td>
+                <td style="background-color: lightgray;">{{ subject.total }}</td>
+                <td>{{ subject.th1 }}</td>
+                <td>{{ subject.th2 }}</td>
+                <td>{{ subject.practical }}</td>
+                <td>{{ subject.total }}</td>
+                <td>{{ subject.percentage }}%</td>
+                <td>{{ subject.grade }}</td>
+                <td>{{ subject.status }}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+
+                <th colspan="1" style="background-color: white;"></th>
+
+                <th colspan="3">1200</th>
+
+                <th colspan="7" style="background-color: white;">MARKS OBTAINED: {{ student_result.total_marks }} {{ student_result.overall_grade }}</th>
+
+            </tr>
+        </table>
+        <p style="font-size: 17px; font-weight: bold; width: 80%; margin: 0 auto; margin-top: 30px;">
+            The candidate has Passed and obtained Marks {{ student_result.total_marks|number_to_words }}.
+        </p>
+        <p style="font-size: 16px;  width: 80%; margin: 0 auto; margin-top: 30px;">NOTE:
+            <br> (i)This provisional result intimation is issued as a notice only. Errors and omissions excepted. If a candidate finds any discrepancy in the Result Intimation or desires correction in any of the particulars, he/she may contact the Board
+            within 30 days after declaration of the result. Any entry appearing in it does not itself confer any right or privilege independently for the grant of proper certificate, which will be issued under the Rules/ Regulations.
+            <br>(ii)The Star (*) indicates that the candidate has passed the subject/s with concessional marks under Board Rule. In case he/she is not willing to accept the concessional marks, necessary permission to reappear in the subject/s may be obtained
+            within the schedule for submission of admission form and fee for the next immediate examination provided he/she has the chance/s to re-appear as a compartment candidate in the said examination.
+            <br>(iii)Candidate intending to apply for re-checking of his/her paper/s may apply Online within 15 days after declaration of the result.
+            <br>(iv)A candidate intending to improve his/her grade or marks are allowed to appear in Subject/s or Part-I or Part-II or both with one examination opportunity within one year of passing relevant examination in the same group/subjects in
+            current/prevalent syllabus. If the candidate qualified subject/s with concessional marks, he/she will also have to appear and qualify in those subject/s for improvement of marks/grade. In case a candidate fails to improve his/her marks/grade
+            in any part or subject/s, his/her previous result will remain intact.
+            <br>(v) A candidate who was declared full fail in the examination will have to appear, if he intends, under prevalent/current syllabus.
+            <br>(vi) If the result intimation is lost, the result intimation can be obtained by the candidate on payment of prescribed fee.</p>
+        <div class="img-txt">
+            <img style="width: 80px ; height: 80px ; margin-left: 1250px; " src="/static/image2.png" alt="">
+            <p style="margin-left: 1210px;"><b>Controller of Examinations</b></p>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
